@@ -52,6 +52,11 @@ ADD caffe-ld-so.conf /etc/ld.so.conf.d/
 # Run ldconfig again (not sure if needed)
 RUN ldconfig
 
+# installing MathJax
+RUN wget https://github.com/mathjax/MathJax/archive/v2.5-latest.zip -O /mathjax.zip
+RUN python -m IPython.external.mathjax /mathjax.zip
+
+
 # Copy the notebook into the container
 ADD dream.ipynb /notebooks/
 
